@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MVCProdCatApp.Models
@@ -14,12 +15,14 @@ namespace MVCProdCatApp.Models
         
         [Range(1, int.MaxValue)]
         public double Price { get; set; }
+        [ValidateNever]
         public string Image { get; set; }
         
         [Display(Name = "Category Type")]
         public int CategoryId { get; set; }
         
         [ForeignKey("CategoryId")]
+        [ValidateNever]
         public virtual Category Category { get; set; }
 
     }
